@@ -12,3 +12,8 @@ type VideoInfo struct {
 	Name         string `json:"name"`
 	DisplayCtime string `json:"display_ctime"`
 }
+
+type SimpleSession struct {
+	Username string
+	TTL      int64
+}
