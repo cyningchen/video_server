@@ -59,7 +59,7 @@ func AddNewVideo(aid int, name string) (video *defs.VideoInfo, err error) {
 		return
 	}
 	ctime := time.Now().Format("Jan 02 2006, 15:04:05")
-	stmtIns, err := dbConn.Prepare("INSERT INTO video_info(id, author_id, name, display_ctime) VALUES (?,?,?,?,)")
+	stmtIns, err := dbConn.Prepare("INSERT INTO video_info(id, author_id, name, display_ctime) VALUES (?,?,?,?)")
 	if err != nil {
 		return
 	}
