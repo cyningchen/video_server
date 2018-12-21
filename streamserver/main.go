@@ -29,7 +29,7 @@ func (m MiddWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func RegisterHandlers() *httprouter.Router {
 	router := httprouter.New()
-	router.POST("/videos/:vid-id", streamHandler)
+	router.GET("/videos/:vid-id", streamHandler)
 	router.POST("/upload/:vid-id", uploadHandler)
 	return router
 }
