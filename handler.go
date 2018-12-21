@@ -30,7 +30,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		sendErrorResponse(w, defs.ErrorInternalFault)
 		return
 	} else {
-		sendNormalResponse(w, string(resp), 206)
+		sendNormalResponse(w, string(resp), 201)
 	}
 }
 

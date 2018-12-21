@@ -23,7 +23,7 @@ func (m middleWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func RegisterHandlers() *httprouter.Router {
 	router := httprouter.New()
-	router.GET("/user", CreateUser)
+	router.POST("/user", CreateUser)
 	router.POST("/user/:username", Login)
 	return router
 }
@@ -31,7 +31,7 @@ func RegisterHandlers() *httprouter.Router {
 func main() {
 	r := RegisterHandlers()
 	mh := NewMiddleWareHandler(r)
-	err := http.ListenAndServe(":8888", mh)
+	err := http.ListenAndServe(":8080", mh)
 	if err != nil {
 		fmt.Println(err)
 	}
