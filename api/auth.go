@@ -1,9 +1,9 @@
-package main
+package api
 
 import (
 	"net/http"
-	"video_server/defs"
-	"video_server/session"
+	"video_server/api/defs"
+	"video_server/api/session"
 )
 
 var (

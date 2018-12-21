@@ -3,9 +3,9 @@ package session
 import (
 	"sync"
 	"time"
-	"video_server/dbops"
-	"video_server/defs"
-	"video_server/utils"
+	"video_server/api/dbops"
+	"video_server/api/defs"
+	"video_server/api/utils"
 )
 
 var (

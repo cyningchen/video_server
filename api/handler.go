@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"encoding/json"
@@ -6,9 +6,9 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
-	"video_server/dbops"
-	"video_server/defs"
-	"video_server/session"
+	"video_server/api/dbops"
+	"video_server/api/defs"
+	"video_server/api/session"
 )
 
 func CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {

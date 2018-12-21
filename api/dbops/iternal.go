@@ -5,7 +5,7 @@ import (
 	"log"
 	"strconv"
 	"sync"
-	"video_server/defs"
+	"video_server/api/defs"
 )
 
 func InsertSession(sid string, ttl int64, uname string) (err error) {
