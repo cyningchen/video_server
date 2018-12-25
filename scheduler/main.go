@@ -10,7 +10,7 @@ import (
 func main() {
 	go taskrunner.Start()
 	r := RegisterHandlers()
-	if err := http.ListenAndServe("9001", r); err != nil {
+	if err := http.ListenAndServe(":9001", r); err != nil {
 		fmt.Println("listen and serve failed, ", err)
 	}
 
