@@ -1,13 +1,13 @@
 package taskrunner
 
 type Runner struct {
-	Controller controlChan
-	Error      controlChan
-	Data       dataChan
+	Controller controlChan // 控制通道， dispatcher和executor交换信息
+	Error      controlChan // 错误信息通道
+	Data       dataChan    // 数据通道
 	dataSize   int
 	Longlived  bool
-	Dispatcher fn
-	Executor   fn
+	Dispatcher fn // 将数据写入Data通道
+	Executor   fn // 从Data通道中获取数据处理
 }
 
 func NewRunner(size int, longlived bool, d fn, e fn) *Runner {

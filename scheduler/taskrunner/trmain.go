@@ -1,1 +1,30 @@
 package taskrunner
+
+import "time"
+
+type Worker struct {
+	Ticker *time.Ticker
+	runner *Runner
+}
+
+func NewWorker(interval time.Duration, r *Runner) *Worker {
+	return &Worker{
+		Ticker: time.NewTicker(interval * time.Second),
+		runner: r,
+	}
+}
+
+func (w *Worker) startWorker() {
+	for {
+		select {
+		case <-w.Ticker.C:
+			go w.runner.startAll()
+		}
+	}
+}
+
+func Start() {
+	r := NewRunner(3, true, VideoClearDispatcher, VideoClearExecutor)
+	w := NewWorker(3, r)
+	go w.startWorker()
+}
