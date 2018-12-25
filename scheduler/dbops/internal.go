@@ -15,7 +15,7 @@ func ReadVideoDeletionRecord(count int) (ids []string, err error) {
 
 	for rows.Next() {
 		var id string
-		if err := rows.Scan(id); err != nil {
+		if err = rows.Scan(id); err != nil {
 			return
 		}
 		ids = append(ids, id)
