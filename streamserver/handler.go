@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 )
 
 func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
@@ -22,7 +23,7 @@ func streamHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 	//defer video.Close()
 
 	// paly video from aliyun oss
-	targetUrl := "cyning-video-server.oss-cn-shanghai.aliyuncs.com/videos/" + vid
+	targetUrl := "http://cyning-video-server.oss-cn-shanghai.aliyuncs.com/videos/" + vid
 	http.Redirect(w, r, targetUrl, 301)
 }
 
@@ -51,6 +52,17 @@ func uploadHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) 
 		sendErrorResponse(w, http.StatusInternalServerError, "Write file error")
 		return
 	}
+
+	ossfn := "videos/" + fn
+	path := "./videos/" + fn
+	bn := "cyning-video-server"
+	res := UploadToOss(ossfn, path, bn)
+	if !res {
+		sendErrorResponse(w, http.StatusInternalServerError, "Internal upload error")
+	}
+
+	os.Remove(path)
+
 	w.WriteHeader(http.StatusCreated)
 	io.WriteString(w, "Upload success")
 }
