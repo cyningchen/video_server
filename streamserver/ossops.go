@@ -12,9 +12,9 @@ var (
 )
 
 func init() {
-	AK = "LTAIZ32HcUM64Qqv"
+	AK = "admin"
 	EP = "oss-cn-shanghai.aliyuncs.com"
-	SK = "IySFbDRQnpa8YH5Th57uplNualKP65"
+	SK = "password"
 }
 
 func UploadToOss(filename string, path string, bn string) bool {
